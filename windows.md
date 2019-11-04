@@ -1,4 +1,12 @@
-# Windows
+# Windows <!-- omit in toc -->
+
+- [Autostart](#autostart)
+- [Software Packages](#software-packages)
+  - [chocolatey](#chocolatey)
+    - [Global Confirmation](#global-confirmation)
+    - [List of Packages](#list-of-packages)
+  - [X Server](#x-server)
+  - [SSH Keys / pageant](#ssh-keys--pageant)
 
 ## Autostart
 1. Windows + R
