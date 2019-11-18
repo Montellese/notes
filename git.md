@@ -6,7 +6,6 @@
 - [Windows](#windows)
   - [Editor](#editor)
 - [Linux](#linux)
-  - [fixup](#fixup)
   - [Prompt](#prompt)
 
 ## General Configuration
@@ -27,22 +26,22 @@ git config --global rerere.enabled true
 
 ## Aliases
 ```
-alias.s=status
-alias.l="log --oneline"
-alias.c=checkout
-alias.cm="checkout master"
-alias.cd="checkout development"
-alias.f=fetch
-alias.p=pull
-alias.pr="pull --rebase"
-alias.fixup="commit --fixup"
-alias.fix="rebase --autosquash --autostash -i"
-alias.rc="rebase --continue"
-alias.rs="rebase --skip"
-alias.ra="rebase --abort"
-alias.force="push --force-with-lease"
-alias.unstage="reset HEAD --"
-alias.cp=cherry-pick
+s = status
+l = "log --oneline"
+c = checkout
+cm = "checkout master"
+cd = "checkout development"
+f = fetch
+p = pull
+pr = "pull --rebase"
+fix = "!fix() { git commit --fixup $1 && GIT_SEQUENCE_EDITOR=: git rebase --interactive --autosquash --autostash $1~1; }; fix"
+rc = "rebase --continue"
+rs = "rebase --skip"
+ra = "rebase --abort"
+force = "push --force-with-lease"
+unstage = "reset HEAD --"
+cp = cherry-pick
+fixup = "commit --fixup"
 ```
 
 ## Windows
@@ -53,24 +52,6 @@ git config --global core.editor "'C:/Program Files/Notepad++/notepad++.exe' -mul
 ```
 
 ## Linux
-### fixup
-Location: `~/.bash_aliases`
-```bash
-function git-fixup () {
-    if [ $# -ne 1 ]; then
-        echo "Invalid number of arguments. Expecting a single commit hash!"
-    else
-        local FIXUP_COMMIT="$1"
-        local FIXUP_COMMIT_MESSAGE=$(git log --format=%B -1 $FIXUP_COMMIT)
-        echo "Fixing up commit \"$FIXUP_COMMIT_MESSAGE\" ($FIXUP_COMMIT) with current staged changes"
-
-        git commit --fixup "$FIXUP_COMMIT" && \
-            GIT_SEQUENCE_EDITOR=: git rebase --interactive --autosquash --autostash "$FIXUP_COMMIT"~1
-    fi
-}
-
-alias gitfix="git-fixup"
-```
 
 ### Prompt
 Location: `~/.bash_aliases`
