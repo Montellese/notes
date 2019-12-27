@@ -3,6 +3,6 @@
 * Developer
   * [git](git.md)
 * Platform
-  * Linux
+  * [Linux](linux.md)
     * [tmux](tmux.md)
   * [Windows](windows.md)
