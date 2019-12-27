@@ -15,6 +15,8 @@
     - [Configuration](#configuration-1)
     - [Usage](#usage-1)
   - [tmux-continuum](#tmux-continuum)
+- [Linux specific configuration](#linux-specific-configuration)
+  - [Update SSH and DISPLAY environment variables](#update-ssh-and-display-environment-variables)
 
 ## Usage
 
@@ -55,6 +57,7 @@ bind -n M-Down select-pane -D
 
 # reload the environment
 set -g update-environment -r
+set-environment -g 'SSH_AUTH_SOCK' ~/.ssh/ssh_auth_sock
 ```
 
 ## Specific configurations
@@ -151,4 +154,35 @@ set -g @continuum-restore 'on'
 
 set -g @plugin 'tmux-plugins/tmux-resurrect'
 set -g @plugin 'tmux-plugins/tmux-continuum'
+```
+
+## Linux specific configuration
+
+### Update SSH and DISPLAY environment variables
+
+Location: `~/.ssh/rc`
+```bash
+#!/bin/bash
+
+# http://techblog.appnexus.com/2011/managing-ssh-sockets-in-gnu-screen/
+# https://gist.github.com/martijnvermaat/8070533
+# http://stackoverflow.com/questions/21378569/how-to-auto-update-ssh-agent-environment-variables-when-attaching-to-existing-tm
+
+# Fix SSH auth socket location so agent forwarding works with tmux / screen.
+if [ ! -S ~/.ssh/ssh_auth_sock ] && [ -S "$SSH_AUTH_SOCK" ]; then
+    ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
+fi
+
+# Don't break x11 Forwarding:
+# Taken from the sshd(8) manpage.
+if read proto cookie && [ -n "$DISPLAY" ]; then
+        if [ `echo $DISPLAY | cut -c1-10` = 'localhost:' ]; then
+                # X11UseLocalhost=yes
+                echo add unix:`echo $DISPLAY |
+                    cut -c11-` $proto $cookie
+        else
+                # X11UseLocalhost=no
+                echo add $DISPLAY $proto $cookie
+        fi | xauth -q -
+fi
 ```
