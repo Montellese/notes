@@ -11,37 +11,43 @@
 ## General Configuration
 Location: `~/.gitconfig`
 ```
-rebase.autosquash=true
-push.default=tracking
-branch.autsetuprebase=always
-diff.renames=copies
-rerere.enabled=true
-github.user=Montellese
-```
+[rebase]
+    autosquash = true
+[push]
+    default = tracking
+[branch]
+    autsetuprebase = always
+[diff]
+    renames = copies
+[rerere]
+    enabled = true
 
-## rerere
-```
-git config --global rerere.enabled true
+[github]
+    user = Montellese
+[user]
+    name = Montellese
+    email = sascha.montellese@gmail.com
 ```
 
 ## Aliases
 ```
-s = status
-l = "log --oneline"
-c = checkout
-cm = "checkout master"
-cd = "checkout development"
-f = fetch
-p = pull
-pr = "pull --rebase"
-fix = "!fix() { git commit --fixup $1 && GIT_SEQUENCE_EDITOR=: git rebase --interactive --autosquash --autostash $1~1; }; fix"
-rc = "rebase --continue"
-rs = "rebase --skip"
-ra = "rebase --abort"
-force = "push --force-with-lease"
-unstage = "reset HEAD --"
-cp = cherry-pick
-fixup = "commit --fixup"
+[alias]
+    s = status
+    l = "log --oneline"
+    c = checkout
+    cm = "checkout master"
+    cd = "checkout development"
+    f = fetch
+    p = pull
+    pr = "pull --rebase"
+    fix = "!fix() { git commit --fixup  && GIT_SEQUENCE_EDITOR=: git rebase --interactive --autosquash --autostash ~1; }; fix"
+    rc = "rebase --continue"
+    rs = "rebase --skip"
+    ra = "rebase --abort"
+    force = "push --force-with-lease"
+    unstage = "reset HEAD --"
+    cp = cherry-pick
+    fixup = "commit --fixup"
 ```
 
 ## Windows
