@@ -39,7 +39,7 @@ Location: `~/.gitconfig`
     f = fetch
     p = pull
     pr = "pull --rebase"
-    fix = "!fix() { git commit --fixup  && GIT_SEQUENCE_EDITOR=: git rebase --interactive --autosquash --autostash ~1; }; fix"
+    fix = "!fix() { git commit --fixup $1 && GIT_SEQUENCE_EDITOR=: git rebase --interactive --autosquash --autostash $1~1; }; fix"
     rc = "rebase --continue"
     rs = "rebase --skip"
     ra = "rebase --abort"
