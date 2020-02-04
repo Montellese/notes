@@ -1,7 +1,6 @@
 # Git <!-- omit in toc -->
 
 - [General Configuration](#general-configuration)
-- [rerere](#rerere)
 - [Aliases](#aliases)
 - [Windows](#windows)
   - [Editor](#editor)
