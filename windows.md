@@ -7,6 +7,8 @@
     - [List of Packages](#list-of-packages)
   - [X Server](#x-server)
   - [SSH Keys / pageant](#ssh-keys--pageant)
+- [PuTTY](#putty)
+  - [nord-putty](#nord-putty)
 
 ## Autostart
 1. Windows + R
@@ -59,3 +61,15 @@ Create an autostart shortcut with the following **Target**:
 ```bash
 "C:\Program Files\PuTTY\pageant.exe" [multiple-paths-to-.ppk's]
 ```
+
+## PuTTY
+
+### nord-putty
+
+Source: https://github.com/arcticicestudio/nord-putty
+
+1. Download [nord.reg](https://github.com/arcticicestudio/nord-putty/blob/develop/src/nord.reg)
+2. Execute `nord.reg`
+3. Open PuTTY
+4. Switch to the `Session` node in the tree
+5. Select `Nord` from the `Saved Sessions` list
