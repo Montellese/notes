@@ -10,7 +10,7 @@
     - [Configuration](#configuration)
     - [Installing plugins](#installing-plugins)
     - [Updating plugins](#updating-plugins)
-  - [tmux-themepack](#tmux-themepack)
+  - [nord-tmux](#nord-tmux)
   - [tmux-resurrect](#tmux-resurrect)
     - [Configuration](#configuration-1)
     - [Usage](#usage-1)
@@ -109,18 +109,12 @@ run -b '~/.tmux/plugins/tpm/tpm'
 
 Press `<prefix> + U` to update the installed plugins.
 
-### tmux-themepack
+### nord-tmux
 
-Source: https://github.com/jimeh/tmux-themepack
+Source: https://github.com/arcticicestudio/nord-tmux
 
 ```
-# choose a tmux themepack
-set -g @themepack 'basic'
-# set -g @themepack 'powerline/block/blue'
-
-...
-
-set -g @plugin 'jimeh/tmux-themepack'
+set -g @plugin 'arcticicestudio/nord-tmux'
 ```
 
 ### tmux-resurrect
