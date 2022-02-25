@@ -1,7 +1,23 @@
 # Linux <!-- omit in toc -->
 
+- [Bash](#bash)
+  - [synth-shell](#synth-shell)
 - [SSH](#ssh)
   - [Autostart ssh-agent](#autostart-ssh-agent)
+
+
+## Bash
+
+### synth-shell
+
+Source: https://github.com/andresgongora/synth-shell
+
+```bash
+git clone --recursive https://github.com/andresgongora/synth-shell.git
+chmod +x synth-shell/setup.sh
+cd synth-shell
+./setup.sh
+```
 
 ## SSH
 
