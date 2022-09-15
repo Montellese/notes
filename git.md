@@ -2,6 +2,7 @@
 
 - [General Configuration](#general-configuration)
 - [Aliases](#aliases)
+- [Signing Commits using an SSH Key](#signing-commits-using-an-ssh-key)
 - [Windows](#windows)
   - [Editor](#editor)
 - [Linux](#linux)
@@ -26,6 +27,13 @@ Location: `~/.gitconfig`
 [user]
     name = Montellese
     email = sascha.montellese@gmail.com
+
+[commit]
+        gpgsign = true
+[gpg]
+        format = ssh
+[gpg "ssh"]
+        allowedSignersFile = C:/Users/Sascha/.ssh/allowed_signers
 ```
 
 ## Aliases
@@ -47,6 +55,20 @@ Location: `~/.gitconfig`
     unstage = "reset HEAD --"
     cp = cherry-pick
     fixup = "commit --fixup"
+```
+
+## Signing Commits using an SSH Key
+Source: [Signing Git Commits with Your SSH Key](https://calebhearth.com/sign-git-with-ssh)
+```bash
+git config --global commit.gpgsign true
+git config --global gpg.format ssh
+git config --global user.signingkey "<SSH private key identifier>"
+```
+Verifying signed commits using SSH keys:
+```bash
+git config --global gpg.ssh.allowedsignersfile=~/.ssh/allowed_signers
+touch ~/.ssh/allowed_signers
+echo "* <SSH public key identifier>" > ~/.ssh/allowed_signers
 ```
 
 ## Windows
